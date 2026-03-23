@@ -4,141 +4,347 @@
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <title>Raja Bhaiya</title>
-
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700;900&display=swap" rel="stylesheet">
 
 <style>
 *{margin:0;padding:0;box-sizing:border-box}
 
 body{
-font-family:'Inter',sans-serif;
-height:100vh;
-display:flex;
-align-items:center;
-justify-content:center;
-background:linear-gradient(180deg,#130200,#1b0500,#07000a);
-color:#fff;
-overflow:hidden;
+  font-family:'Inter',sans-serif;
+  height:100vh;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  overflow:hidden;
+  color:#fff;
+  background:
+    radial-gradient(circle at top, rgba(255,183,0,.16), transparent 28%),
+    radial-gradient(circle at bottom, rgba(255,120,0,.10), transparent 30%),
+    linear-gradient(180deg,#140300 0%,#1a0600 35%,#09000b 100%);
+  position:relative;
+}
+
+body::before{
+  content:"";
+  position:absolute;
+  inset:0;
+  background-image:radial-gradient(rgba(255,176,0,.14) 1px, transparent 1px);
+  background-size:28px 28px;
+  opacity:.35;
+  pointer-events:none;
+}
+
+body::after{
+  content:"";
+  position:absolute;
+  width:320px;
+  height:320px;
+  border-radius:50%;
+  background:radial-gradient(circle, rgba(255,166,0,.18), transparent 70%);
+  filter:blur(25px);
+  bottom:-120px;
+  left:50%;
+  transform:translateX(-50%);
+  pointer-events:none;
 }
 
 .container{
-width:92%;
-max-width:420px;
-text-align:center;
+  width:92%;
+  max-width:410px;
+  text-align:center;
+  position:relative;
+  z-index:2;
+  padding:18px 14px;
+  border-radius:28px;
+  background:linear-gradient(180deg, rgba(255,255,255,.04), rgba(255,130,0,.03));
+  border:1px solid rgba(255,174,0,.10);
+  box-shadow:
+    0 15px 40px rgba(0,0,0,.35),
+    inset 0 1px 0 rgba(255,255,255,.03);
+  backdrop-filter:blur(10px);
+}
+
+.topline{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  gap:10px;
+  font-size:11px;
+  font-weight:800;
+  letter-spacing:1.8px;
+  text-transform:uppercase;
+  color:#ffbd4a;
+  margin-bottom:12px;
 }
 
 .logo{
-width:120px;
-height:120px;
-margin:10px auto;
-border-radius:50%;
-background:linear-gradient(135deg,#ffbb00,#ff6a00);
-display:flex;
-align-items:center;
-justify-content:center;
-font-size:32px;
-font-weight:900;
+  width:112px;
+  height:112px;
+  margin:0 auto 10px;
+  border-radius:50%;
+  padding:7px;
+  background:linear-gradient(135deg,#ffd24a,#ff9100);
+  box-shadow:
+    0 0 22px rgba(255,174,0,.24),
+    0 10px 30px rgba(255,123,0,.22);
+  animation:float 3.8s ease-in-out infinite;
+}
+
+.logo-inner{
+  width:100%;
+  height:100%;
+  border-radius:50%;
+  background:radial-gradient(circle at 30% 30%, #fff7dd, #ffc85e 40%, #ff9c12 70%, #5b1800 100%);
+  border:3px solid rgba(255,255,255,.9);
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  flex-direction:column;
+  color:#2a0900;
+  font-weight:900;
+  line-height:1;
+}
+
+.crown{
+  font-size:24px;
+  margin-bottom:4px;
+}
+
+.logo-text{
+  font-size:20px;
+  letter-spacing:.5px;
+}
+
+.logo-sub{
+  margin-top:4px;
+  font-size:10px;
+  background:#2a0900;
+  color:#ffd34f;
+  padding:4px 8px;
+  border-radius:999px;
+  letter-spacing:1px;
+}
+
+.badges{
+  display:flex;
+  justify-content:center;
+  gap:8px;
+  flex-wrap:wrap;
+  margin-bottom:10px;
 }
 
 .badge{
-display:inline-block;
-padding:6px 14px;
-border-radius:20px;
-background:rgba(255,140,0,0.15);
-font-size:12px;
-margin-top:8px;
+  padding:7px 12px;
+  border-radius:999px;
+  font-size:11px;
+  font-weight:800;
+  color:#ffd58a;
+  background:rgba(255,145,0,.09);
+  border:1px solid rgba(255,170,0,.12);
+  box-shadow:inset 0 0 0 1px rgba(255,255,255,.02);
 }
 
 .title{
-font-size:34px;
-font-weight:900;
-margin:12px 0 8px;
-color:#ffb300;
+  font-size:34px;
+  font-weight:900;
+  line-height:.95;
+  margin:8px 0 8px;
+  text-transform:uppercase;
+  letter-spacing:1px;
+  background:linear-gradient(180deg,#ff8f0a 0%,#ffd028 100%);
+  -webkit-background-clip:text;
+  -webkit-text-fill-color:transparent;
+  text-shadow:0 0 16px rgba(255,170,0,.12);
 }
 
 .desc{
-font-size:13px;
-color:#ddd;
-margin-bottom:12px;
+  font-size:12.5px;
+  color:#e4c8b4;
+  margin-bottom:12px;
+  line-height:1.45;
+}
+
+.strip{
+  width:100%;
+  padding:12px 10px;
+  border-radius:16px;
+  margin-bottom:12px;
+  background:linear-gradient(180deg, rgba(255,144,0,.08), rgba(255,100,0,.04));
+  border:1px solid rgba(255,160,0,.12);
+  color:#ffcb68;
+  font-size:11px;
+  font-weight:800;
+  letter-spacing:1.3px;
+  text-transform:uppercase;
 }
 
 .features{
-display:flex;
-justify-content:center;
-gap:8px;
-flex-wrap:wrap;
-margin-bottom:14px;
+  display:flex;
+  justify-content:center;
+  gap:8px;
+  flex-wrap:wrap;
+  margin-bottom:12px;
 }
 
 .feature{
-font-size:11px;
-padding:6px 10px;
-border-radius:12px;
-background:rgba(255,255,255,0.06);
+  font-size:10.5px;
+  padding:7px 10px;
+  border-radius:12px;
+  background:rgba(255,255,255,.05);
+  border:1px solid rgba(255,161,0,.10);
+  color:#fff0e3;
+  font-weight:700;
 }
 
 .stats{
-display:flex;
-justify-content:space-around;
-margin-bottom:14px;
-font-size:12px;
+  display:flex;
+  justify-content:space-around;
+  align-items:center;
+  margin-bottom:14px;
+}
+
+.stat{
+  flex:1;
+  position:relative;
+}
+
+.stat:not(:last-child)::after{
+  content:"";
+  position:absolute;
+  right:0;
+  top:5px;
+  width:1px;
+  height:34px;
+  background:linear-gradient(180deg, transparent, rgba(255,173,70,.35), transparent);
+}
+
+.stat h3{
+  font-size:18px;
+  color:#ffc62b;
+  font-weight:900;
+  margin-bottom:3px;
+}
+
+.stat p{
+  font-size:9.5px;
+  color:#b99780;
+  text-transform:uppercase;
+  letter-spacing:1.6px;
+  font-weight:700;
 }
 
 .btn{
-display:block;
-text-decoration:none;
-padding:14px;
-border-radius:12px;
-font-weight:900;
-margin-bottom:10px;
+  display:block;
+  width:100%;
+  text-decoration:none;
+  padding:15px 14px;
+  border-radius:16px;
+  font-weight:900;
+  text-transform:uppercase;
+  letter-spacing:.6px;
+  transition:.25s ease;
 }
 
-.primary{
-background:linear-gradient(90deg,#ffbb00,#ff8c00);
-color:#000;
+.btn.primary{
+  background:linear-gradient(90deg,#ffba00,#ffd31f 55%,#ff9500);
+  color:#150500;
+  font-size:18px;
+  box-shadow:
+    0 14px 30px rgba(255,157,0,.26),
+    0 0 25px rgba(255,183,0,.14);
+  animation:pulse 1.8s infinite;
 }
 
-.secondary{
-background:rgba(255,255,255,0.08);
-color:#fff;
+.btn.primary:hover{
+  transform:translateY(-2px) scale(1.01);
+}
+
+.btn.secondary{
+  margin-top:10px;
+  background:rgba(255,255,255,.04);
+  border:1px solid rgba(255,170,0,.12);
+  color:#fff4ea;
+  font-size:15px;
+}
+
+.btn.secondary:hover{
+  transform:translateY(-2px);
+  background:rgba(255,255,255,.06);
+}
+
+@keyframes pulse{
+  0%,100%{box-shadow:0 14px 30px rgba(255,157,0,.26),0 0 22px rgba(255,183,0,.12)}
+  50%{box-shadow:0 16px 34px rgba(255,157,0,.34),0 0 34px rgba(255,183,0,.22)}
+}
+
+@keyframes float{
+  0%,100%{transform:translateY(0)}
+  50%{transform:translateY(-5px)}
+}
+
+@media (max-width:420px){
+  .title{font-size:30px}
+  .desc{font-size:12px}
+  .btn.primary{font-size:16px}
+  .btn.secondary{font-size:14px}
 }
 </style>
 </head>
-
 <body>
 
 <div class="container">
+  <div class="topline">
+    <span>Premium Cricket</span>
+    <span>110K+ Subscribers</span>
+  </div>
 
-<div class="logo">👑</div>
+  <div class="logo">
+    <div class="logo-inner">
+      <div class="crown">👑</div>
+      <div class="logo-text">Raja</div>
+      <div class="logo-sub">Bhaiya</div>
+    </div>
+  </div>
 
-<div class="badge">110,473 Subscribers</div>
+  <div class="badges">
+    <div class="badge">✦ Official</div>
+    <div class="badge">110,473 Subscribers</div>
+  </div>
 
-<h1 class="title">Raja Bhaiya</h1>
+  <h1 class="title">Raja Bhaiya</h1>
 
-<p class="desc">
-IPL Tips • Match Prediction • Live Updates
-</p>
+  <p class="desc">IPL tips • match updates • daily cricket action</p>
 
-<div class="features">
-<div class="feature">🏏 Tips</div>
-<div class="feature">⚡ Live</div>
-<div class="feature">🔥 IPL</div>
-</div>
+  <div class="strip">🏏 Premium • Cricket • IPL • Free Join</div>
 
-<div class="stats">
-<div>110K+</div>
-<div>Cricket</div>
-<div>Free</div>
-</div>
+  <div class="features">
+    <div class="feature">🏏 Match Tips</div>
+    <div class="feature">⚡ Live Updates</div>
+    <div class="feature">🔥 IPL</div>
+  </div>
 
-<a href="https://t.me/+bPbOm-gUrINlOWRk" class="btn primary">
-Join Channel — Free
-</a>
+  <div class="stats">
+    <div class="stat">
+      <h3>110K+</h3>
+      <p>Subscribers</p>
+    </div>
+    <div class="stat">
+      <h3>IPL</h3>
+      <p>Focus</p>
+    </div>
+    <div class="stat">
+      <h3>FREE</h3>
+      <p>Join</p>
+    </div>
+  </div>
 
-<a href="https://t.me/+bPbOm-gUrINlOWRk" class="btn secondary">
-Start Now
-</a>
+  <a href="https://t.me/+bPbOm-gUrINlOWRk" class="btn primary" target="_blank">
+    ✈ Join Channel — It's Free
+  </a>
 
+  <a href="https://t.me/+bPbOm-gUrINlOWRk" class="btn secondary" target="_blank">
+    Start Winning Today
+  </a>
 </div>
 
 </body>
